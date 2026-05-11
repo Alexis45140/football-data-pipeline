@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw_football  # C'est le nom que tu appelles dans ton SQL : {{ source('raw_football', ...) }}
+    database: my-project-foot-496012 # Ton ID de projet Google Cloud
+    schema: football_data      # Le nom du dataset dans BigQuery où sont tes données brutes
+    tables:
+      - name: stg_transferts   # Le nom exact de la table dans BigQuery
