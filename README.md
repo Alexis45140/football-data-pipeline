@@ -57,7 +57,7 @@ Le modèle de données final alimente un dashboard permettant d'analyser :
 - Les clubs les plus actifs sur le marché.
 - La précision temporelle des transactions (timestamping).
 
-> *Note : Un screenshot du dashboard sera ajouté ici prochainement.*
+![Aperçu du Dashboard](images/football_dashboard_preview.png)
 
 ## 🧠 Défis Techniques Résolus
 - **Data Quality** : Résolution de problèmes de formatage de dates via `SAFE.PARSE_TIMESTAMP` pour éviter les échecs de pipeline.
