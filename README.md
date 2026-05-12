@@ -31,17 +31,16 @@ Le pipeline suit une architecture de médaillon simplifiée :
 ├── docker-compose.yml    # Orchestration du container dbt
 ├── Dockerfile            # Image personnalisée dbt-bigquery
 └── README.md             # Documentation
+```
 
-⚙️ Installation et Utilisation
-Pré-requis
-Docker installé sur votre machine.
+## ⚙️ Installation et Utilisation
+### Pré-requis
+* Docker installé sur votre machine.
+* Un projet Google Cloud avec un accès à BigQuery.
+* Un fichier `profiles.yml` configuré pour dbt.
 
-Un projet Google Cloud avec un accès à BigQuery.
-
-Un fichier profiles.yml configuré pour dbt.
-
-Lancement du pipeline
-Clonez le dépôt :
+### Lancement du pipeline
+1. **Clonez le dépôt :**
 
 Bash
 git clone [https://github.com/Alexis45140/football-data-pipeline.git](https://github.com/Alexis45140/football-data-pipeline.git)
@@ -62,3 +61,9 @@ Le modèle de données final alimente un dashboard permettant d'analyser :
 ## 🧠 Défis Techniques Résolus
 - **Data Quality** : Résolution de problèmes de formatage de dates via `SAFE.PARSE_TIMESTAMP` pour éviter les échecs de pipeline.
 - **Conteneurisation** : Mise en place d'un environnement Docker pour assurer la reproductibilité des builds SQL indépendamment de la machine locale.
+
+## 👤 CONTACT
+**Ton Prénom Nom**
+* [Mon Profil LinkedIn](https://www.linkedin.com/in/alexis-claudeon/)
+* [Mon Portfolio](https://github.com/alexis45140)
+
