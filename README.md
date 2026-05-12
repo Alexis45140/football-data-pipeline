@@ -64,7 +64,7 @@ Le modèle de données final alimente un dashboard permettant d'analyser :
 - **Conteneurisation** : Mise en place d'un environnement Docker pour assurer la reproductibilité des builds SQL indépendamment de la machine locale.
 
 ## 👤 CONTACT
-**Ton Prénom Nom**
+**Alexis Claudeon**
 * [Mon Profil LinkedIn](https://www.linkedin.com/in/alexis-claudeon/)
 * [Mon Portfolio](https://github.com/alexis45140)
 
