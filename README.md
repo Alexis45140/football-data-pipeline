@@ -14,6 +14,27 @@ Le pipeline suit une architecture de médaillon simplifiée :
 - **Staging (`stg_football_transfers`)** : Nettoyage des données API, renommage des colonnes et typage initial.
 - **Marts (`fct_transfer_analysis`)** : Couche finale de reporting exploitant les données de l'année en cours (**2026**). Gestion des formats ISO complexes (`YYYY-MM-DDTHH:MM:SSZ`) convertis en `DATE` et `TIMESTAMP`.
 
+## 🤔 Choix d'architecture & Justifications
+
+- **Pourquoi dbt plutôt que des scripts SQL bruts ?**
+  Versioning des transformations, tests automatiques, documentation 
+  générée, et séparation claire staging/marts conforme aux standards 
+  data engineering modernes.
+
+- **Pourquoi Docker ?**
+  Garantir que le pipeline tourne à l'identique sur n'importe quelle 
+  machine (la mienne, celle d'un recruteur, un serveur de prod). 
+  Élimine la classe entière des bugs "ça marche chez moi".
+
+- **Pourquoi BigQuery ?**
+  Serverless (pas d'infra à gérer pour un projet perso), facturation 
+  à la requête, et intégration native avec dbt via l'adapter dbt-bigquery.
+
+- **Pourquoi une architecture médaillon (staging → marts) ?**
+  Sépare les responsabilités : staging = nettoyage / typage, 
+  marts = logique métier. Permet la réutilisation des modèles staging 
+  pour d'autres analyses futures sans refaire le travail.
+
 ## 🛠️ Stack Technique
 - **API Source** : Football Data API (Extracts 2026)
 - **Data Warehouse** : Google BigQuery
