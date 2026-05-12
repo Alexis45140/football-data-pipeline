@@ -1,24 +1,25 @@
-# ⚽ Football Data Pipeline (ELT)
+# ⚽ Football Data Pipeline (ELT) - Mercato 2026
 
-Ce projet illustre la mise en place d'une **Modern Data Stack** complète pour extraire, transformer et analyser des données de transferts de football. Il transforme des données brutes issues d'une API en une **Table de Faits** structurée et prête pour la Business Intelligence.
+Ce projet illustre la mise en place d'une **Modern Data Stack** complète pour l'analyse en temps réel du marché des transferts. Il automatise l'extraction depuis une **API de football**, le chargement vers le Cloud et la transformation en une **Table de Faits** optimisée pour la Business Intelligence.
 
 ## 🚀 Vue d'Ensemble
-L'objectif est de démontrer une maîtrise du cycle de vie de la donnée :
-1. **Extraction** : Données brutes de transferts chargées dans BigQuery.
-2. **Chargement** : Orchestration via Docker pour garantir la portabilité.
+L'objectif est de démontrer une maîtrise du cycle de vie de la donnée sur des données actuelles :
+1. **Extraction (API)** : Récupération automatisée des transferts récents, incluant les transactions de **2026**.
+2. **Chargement** : Centralisation des données brutes (JSON/API) dans Google BigQuery via Docker.
 3. **Transformation** : Utilisation de **dbt** pour le nettoyage et la modélisation SQL.
-4. **Visualisation** : Dashboard interactif pour le suivi du marché des transferts.
+4. **Visualisation** : Dashboard interactif Power BI analysant les tendances du marché 2026.
 
 ## 🏗️ Architecture des Données
 Le pipeline suit une architecture de médaillon simplifiée :
-- **Staging (`stg_football_transfers`)** : Nettoyage, renommage des colonnes et typage initial.
-- **Marts (`fct_transfer_analysis`)** : Couche finale de reporting. Gestion des formats de dates ISO complexes (`YYYY-MM-DDTHH:MM:SSZ`) convertis en formats `DATE` et `TIMESTAMP` exploitables.
+- **Staging (`stg_football_transfers`)** : Nettoyage des données API, renommage des colonnes et typage initial.
+- **Marts (`fct_transfer_analysis`)** : Couche finale de reporting exploitant les données de l'année en cours (**2026**). Gestion des formats ISO complexes (`YYYY-MM-DDTHH:MM:SSZ`) convertis en `DATE` et `TIMESTAMP`.
 
 ## 🛠️ Stack Technique
+- **API Source** : Football Data API (Extracts 2026)
 - **Data Warehouse** : Google BigQuery
 - **Transformation** : dbt (Data Build Tool)
 - **Environnement** : Docker & Docker Compose
-- **Langages** : SQL (GoogleSQL), YAML, Python
+- **Visualisation** : Power BI
 
 ## 📂 Structure du Projet
 ```text
