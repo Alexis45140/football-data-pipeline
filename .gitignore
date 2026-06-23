@@ -27,3 +27,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# API Keys
+RAPIDAPI_KEY=861fcd799fmshb22fb42bd6add54p1949d4jsn2071aea71eaa

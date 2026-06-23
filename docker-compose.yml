@@ -1,9 +1,16 @@
 services:
+  extract:
+    build: .
+    entrypoint: ["python", "scripts/extract_transfers.py"]
+    volumes:
+      - .:/usr/app
+    env_file:
+      - .env
+
   dbt:
     build: .
     volumes:
       - .:/usr/app
-      # On lie directement le fichier au lieu du dossier
       - ./profiles.yml:/root/.dbt/profiles.yml
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/usr/app/credentials.json

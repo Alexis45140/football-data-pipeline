@@ -16,3 +16,8 @@ models:
       +materialized: view
     marts:
       +materialized: table
+
+seeds:
+  'football_transformation': 
+    +column_types:
+      date_transfert: STRING
