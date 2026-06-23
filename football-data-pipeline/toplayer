@@ -1,0 +1,32 @@
+import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+headers = {
+    "x-rapidapi-key": os.getenv("RAPIDAPI_KEY"),
+    "x-rapidapi-host": "sportapi7.p.rapidapi.com"
+}
+
+# Structure correcte pour un joueur individuel
+# On demande ses infos de base pour récupérer la NATIONALITÉ
+player_id = "381287" 
+url = f"https://sportapi7.p.rapidapi.com/api/v1/player/{player_id}"
+
+def check_player_endpoint():
+    print(f"Vérification de l'accès pour le joueur {player_id}...")
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        player_info = data.get('player', {})
+        print("--- SUCCÈS ! ---")
+        print(f"Joueur : {player_info.get('name')}")
+        print(f"Pays : {player_info.get('country', {}).get('name')}")
+        return True
+    else:
+        print(f"Erreur {response.status_code} : {response.text}")
+        return False
+
+if __name__ == "__main__":
+    check_player_endpoint()

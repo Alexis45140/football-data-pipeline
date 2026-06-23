@@ -1,0 +1,29 @@
+# Credentials sensibles
+.env
+credentials.json
+profiles.yml
+.dbt/
+.user.yml
+
+# Environnement Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Dashboard local (trop volumineux / pas pertinent sur GitHub)
+*.pbix
+../csv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

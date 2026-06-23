@@ -1,0 +1,22 @@
+import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+headers = {
+    "x-rapidapi-key": os.getenv("RAPIDAPI_KEY"),
+    "x-rapidapi-host": "sportapi7.p.rapidapi.com"
+}
+
+# On cherche les équipes du tournoi 17 (Saison 61627)
+url = "https://sportapi7.p.rapidapi.com/api/v1/unique-tournament/17/season/61627/teams"
+
+print("Recherche des équipes de Premier League...")
+response = requests.get(url, headers=headers)
+
+if response.status_code == 200:
+    teams = response.json().get('teams', [])
+    for team in teams:
+        print(f"Équipe : {team.get('name')} | ID : {team.get('id')}")
+else:
+    print(f"Erreur {response.status_code} : {response.text}")
