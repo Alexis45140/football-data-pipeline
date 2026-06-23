@@ -1,0 +1,57 @@
+import os
+import requests
+import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv()
+headers = {
+    "x-rapidapi-key": os.getenv("RAPIDAPI_KEY"),
+    "x-rapidapi-host": "sportapi7.p.rapidapi.com"
+}
+
+# Configuration
+team_id = 35 # Manchester United
+
+def extract_team_players(t_id):
+    # Endpoint pour avoir tous les joueurs d'une équipe
+    url = f"https://sportapi7.p.rapidapi.com/api/v1/team/{t_id}/players"
+    
+    print(f"Extraction de l'effectif pour l'équipe ID {t_id}...")
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code == 200:
+        data = response.json()
+        players_list = data.get('players', [])
+        
+        extracted_data = []
+        for item in players_list:
+            player = item.get('player', {})
+            
+            # On récupère les infos qui t'intéressent
+            extracted_data.append({
+                "player_id": player.get('id'),
+                "name": player.get('name'),
+                "short_name": player.get('shortName'),
+                "position": player.get('position'),
+                "nationality": player.get('country', {}).get('name'), # Voilà la nationalité !
+                "country_code": player.get('country', {}).get('alpha2'),
+                "number": item.get('jerseyNumber')
+            })
+            
+        df = pd.DataFrame(extracted_data)
+        
+        if not df.empty:
+            print(f"Succès ! {len(df)} joueurs trouvés pour Manchester United.")
+            print(df[['name', 'position', 'nationality']].head(10))
+            
+            # Sauvegarde CSV
+            filename = f"team_{t_id}_players.csv"
+            df.to_csv(filename, index=False)
+            print(f"\nFichier '{filename}' créé.")
+        else:
+            print("Aucun joueur trouvé dans la réponse.")
+    else:
+        print(f"Erreur {response.status_code} : {response.text}")
+
+if __name__ == "__main__":
+    extract_team_players(team_id)
