@@ -1,0 +1,10 @@
+football_transformation:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: your-project-id
+      dataset: football_data
+      threads: 1
+      keyfile: path/to/your/service-account.json
