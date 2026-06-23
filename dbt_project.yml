@@ -1,0 +1,18 @@
+name: 'football_transformation'
+version: '1.0.0'
+config-version: 2
+
+profile: 'football_transformation'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+models:
+  football_transformation:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
