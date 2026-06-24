@@ -1,6 +1,30 @@
 ﻿joueur,club_depart,club_arrivee,montant,date_transfert,type_transfert
+Luccas Claro,Eyüpspor,Free agent,0,2026-06-24T17:04:23Z,contract
+Maciej Kikolski,Widzew Łódź,GKS Katowice,0,2026-06-24T16:20:13Z,on loan
+João Pedro,Radomiak Radom,Free agent,0,2026-06-24T16:19:02Z,contract
+Víctor Fernández,Levante,Valencia,0,2026-06-24T13:39:13Z,contract
+Georgiy Dzhikiya,Antalyaspor,Free agent,0,2026-06-24T13:37:23Z,contract
+Álex Centelles,Almeria,Levski Sofia,0,2026-06-24T13:24:51Z,contract
+Miguel Atienza,Free agent,Leganes,0,2026-06-24T13:20:09Z,contract
+Marcin Flis,ŁKS Łódź,Wisła Płock,0,2026-06-24T11:28:32Z,contract
+Yannick Pandor,Lens,Amiens,0,2026-06-24T10:22:42Z,contract
+Conor McMenamin,St. Mirren,Coleraine,0,2026-06-24T10:20:12Z,contract
+Robert Glatzel,Hamburger SV,Wolfsburg,1500000,2026-06-24T10:14:53Z,contract
+Niklas Swider,M'gladbach,Viktoria Köln 1904,0,2026-06-24T10:12:55Z,on loan
+Peter Michael,Ironi Tiberias,Hapoel Raanana,0,2026-06-24T09:51:26Z,contract
+Aleksandr Kovalenko,Sochi,Lokomotiv,0,2026-06-24T09:49:08Z,on loan
+Joedrick Pupe,Vancouver,St.Truiden,0,2026-06-24T09:46:18Z,contract
+Amit Tzur,Maccabi Tel Aviv,Hapoel Ramat Gan,0,2026-06-24T09:45:50Z,contract
+Ibrahim Kanaté,Anderlecht,Kaiserslautern,0,2026-06-24T09:41:53Z,on loan
+Idan Baranes,Hapoel Tel Aviv,Hapoel Ramat Gan,0,2026-06-24T09:40:39Z,on loan
+Bernardo,Tondela,Braga,400000,2026-06-24T09:38:50Z,contract
+Daníel Kristjánsson,FC Midtjylland,Lyngby,0,2026-06-24T09:36:18Z,contract
+Itai Zafrani,Maccabi Tel Aviv,Hapoel Haifa,0,2026-06-24T09:29:13Z,on loan
+Shon Ben Nesher,Maccabi Herzliya,Hapoel Tel Aviv,0,2026-06-24T09:14:51Z,contract
+Itay Shavit,Hapoel Kfar Saba,Hapoel Tel Aviv,0,2026-06-24T09:09:51Z,contract
+Niv Vaknin,Hapoel Beer Sheva,Hapoel Kfar Saba,0,2026-06-24T08:59:59Z,on loan
 Stephan Negru,Oxford Utd,Swindon,0,2026-06-23T22:25:58Z,contract
-Taïryk Arconte,Rodez,Millwall,0,2026-06-23T22:15:25Z,contract
+Taïryk Arconte,Rodez,Millwall,3000000,2026-06-23T22:15:25Z,contract
 Adrian Szczutowski,Free agent,Radomiak Radom,0,2026-06-23T19:55:06Z,contract
 Mauro Icardi,Galatasaray,Free agent,0,2026-06-23T18:06:36Z,contract
 Berkan Kutlu,Konyaspor,Free agent,0,2026-06-23T18:05:25Z,contract
@@ -149,3 +173,329 @@ Noah Solheid,RFC Seraing,Sporting Charleroi,0,2026-06-19T09:42:47Z,contract
 Robin Denuit,Sporting Charleroi,Lokeren,0,2026-06-19T09:36:52Z,contract
 Jules Gaudin,Sporting Charleroi,Laval,0,2026-06-19T09:32:43Z,contract
 Fahem Benaïssa-Yahia,Casa Pia AC,Mantova,0,2026-06-19T09:25:45Z,contract
+Tommaso Corazza,Bologna,Vicenza,0,2026-06-19T08:46:08Z,on loan
+Braian Romero,Velez Sarsfield,Olimpia,0,2026-06-19T05:50:58Z,contract
+Gabriel Rojas,Racing Club,Cruzeiro,5250000,2026-06-19T05:03:04Z,contract
+Anisse Saidi,San Diego FC,Monterey Bay FC,0,2026-06-19T03:21:32Z,on loan
+Karol Swiderski,Panathinaikos,Widzew Łódź,1000000,2026-06-18T23:08:50Z,contract
+Manu Rico,SD Huesca,Hercules,0,2026-06-18T22:16:14Z,contract
+Sergi Roberto,Como,Free agent,0,2026-06-18T22:11:24Z,contract
+Efecan Karaca,Alanyaspor,Free agent,0,2026-06-18T22:09:16Z,contract
+Robert Deziel Jr.,Bayern Munich II,Legia Warszawa,0,2026-06-18T21:49:27Z,contract
+Jimmy-Jay Morgan,Chelsea,West Brom,0,2026-06-18T21:46:19Z,contract
+Krzysztof Kaminski,Pogoń Szczecin,Free agent,0,2026-06-18T21:43:12Z,contract
+Danijel Loncar,Pogoń Szczecin,Free agent,0,2026-06-18T21:42:48Z,contract
+Leonárdo Koútris,Pogoń Szczecin,Free agent,0,2026-06-18T21:42:14Z,contract
+Adnane Ghailan,CE Europa,Cordoba,0,2026-06-18T21:40:57Z,contract
+Jan Paul van Hecke,Brighton,Tottenham,60000000,2026-06-18T21:20:38Z,contract
+Vladislav Sarveli,Lokomotiv,Free agent,0,2026-06-18T20:47:35Z,contract
+Gleb Popolitov,CSKA,Nizhny Novgorod,0,2026-06-18T20:44:05Z,on loan
+Víctor Muñoz,Osasuna,Liverpool,40000000,2026-06-18T20:33:52Z,contract
+Afonso Moreira,Lyon,Leverkusen,29500000,2026-06-18T20:17:25Z,contract
+Erik Kojzek,Wolfsberger AC,Partizan Beograd,0,2026-06-18T17:54:24Z,on loan
+Martin Kramaric,Sochi,Krylya Sovetov,0,2026-06-18T17:35:41Z,contract
+Jordán Carrillo,Santos,Chivas,4500000,2026-06-18T16:42:33Z,contract
+Kevin Castañeda,Tijuana,Chivas,2600000,2026-06-18T16:40:20Z,contract
+Jano ter Horst,Preussen Münster,Paderborn,200000,2026-06-18T16:37:13Z,contract
+Sascha Risch,Dynamo Dresden,Düsseldorf,0,2026-06-18T14:59:34Z,contract
+Bruno Alves,Cruzeiro,Norwich,0,2026-06-18T14:58:03Z,on loan
+Yann Sturm,Freiburg,Eintracht Braunschweig,0,2026-06-18T13:38:00Z,contract
+Asane Sow,Pro Vercelli,Basel,600000,2026-06-18T13:29:56Z,contract
+Lars Cooman,Royal Knokke F.C,Gent,100000,2026-06-18T13:25:29Z,contract
+Ramiz Harakate,Grazer AK,LASK,1500000,2026-06-18T13:18:37Z,contract
+Dominik Weixelbraun,Rapid Wien,Austria Lustenau,0,2026-06-18T13:15:12Z,on loan
+Zento Uno,Shimizu S-Pulse,M'gladbach,500000,2026-06-18T13:03:19Z,contract
+Tim Trummer,Salzburg,Grazer AK,0,2026-06-18T12:57:14Z,on loan
+Carter Pinnington,Liverpool,West Brom,0,2026-06-18T12:51:46Z,contract
+Adil Lechkar,Telstar,Free agent,0,2026-06-18T12:42:36Z,contract
+Danny Bakker,Telstar,Free agent,0,2026-06-18T12:40:38Z,contract
+Can Moustfa,Energie Cottbus,1. FC Nürnberg,0,2026-06-18T12:30:22Z,contract
+Tim van der Leij,RKC Waalwijk,VfB Stuttgart,1200000,2026-06-18T12:25:34Z,contract
+Gabriel Charpentier,Cracovia,Free agent,0,2026-06-18T11:38:24Z,contract
+Jamiro Monteiro,PEC Zwolle,Free agent,0,2026-06-18T11:37:50Z,contract
+Jetro Willems,NEC Nijmegen,Free agent,0,2026-06-18T11:33:03Z,contract
+Eliazer Dasa,NEC Nijmegen,Free agent,0,2026-06-18T11:24:21Z,contract
+Rijk Janse,NEC Nijmegen,FC Groningen,0,2026-06-18T11:22:10Z,contract
+Jasper Cillessen,NEC Nijmegen,Free agent,0,2026-06-18T11:19:36Z,contract
+Ibrahima Konaté,Liverpool,Real Madrid,0,2026-06-18T11:10:43Z,contract
+Mats Seuntjens,FC Groningen,Free agent,0,2026-06-18T11:08:05Z,contract
+Dirk Baron,FC Groningen,FC Emmen,0,2026-06-18T11:04:48Z,contract
+Orlando Núñez,Deportivo Garcilaso,Asociacion Deportiva Tarma,0,2026-06-18T11:00:33Z,contract
+Hidde Jurjus,FC Groningen,Free agent,0,2026-06-18T10:58:08Z,contract
+Maksim Shnaptsev,Nizhny Novgorod,Baltika,0,2026-06-18T10:40:43Z,contract
+Giacomo Calò,Cesena,Frosinone,300000,2026-06-18T10:36:58Z,contract
+Calem Nieuwenhof,Hearts,Perth Glory,0,2026-06-18T10:30:23Z,on loan
+Oleksandr Zinchenko,Ajax,Free agent,0,2026-06-18T10:27:34Z,contract
+Aurelio Oehlers,FC Volendam,Luzern,0,2026-06-18T10:05:48Z,contract
+Christian Cueva,Juan Pablo II,Sport Boys,0,2026-06-17T21:48:12Z,on loan
+Kacper Smolinski,Pogoń Szczecin,Podbeskidzie,0,2026-06-17T21:44:43Z,contract
+Connor Ronan,Colorado,Aberdeen,0,2026-06-17T20:27:09Z,contract
+Ayman Arguigue,SD Huesca,Villarreal B,0,2026-06-17T18:46:25Z,contract
+Jakub Labojko,Free agent,Piast Gliwice,0,2026-06-17T18:43:43Z,contract
+Fabian Reese,Hertha BSC,Wolfsburg,8000000,2026-06-17T18:18:11Z,contract
+Sean Dulic,1860 München,Hoffenheim,0,2026-06-17T18:09:08Z,contract
+Karol Niemczycki,FC Ashdod,Śląsk Wrocław,0,2026-06-17T17:57:07Z,contract
+Barney Stewart,Falkirk,West Brom,0,2026-06-17T17:30:52Z,contract
+Bruno Langa,Almeria,Qarabag FK,1000000,2026-06-17T17:28:17Z,contract
+Renzo Saravia,Valencia,Free agent,0,2026-06-17T13:53:09Z,contract
+Franco Cervi,Celta Vigo,Free agent,0,2026-06-17T13:52:20Z,contract
+Mihailo Ristic,Celta Vigo,Free agent,0,2026-06-17T13:51:53Z,contract
+Óscar Mingueza,Celta Vigo,Free agent,0,2026-06-17T13:51:32Z,contract
+Marcos Alonso,Celta Vigo,Free agent,0,2026-06-17T13:51:08Z,contract
+Joseph Aidoo,Celta Vigo,Free agent,0,2026-06-17T13:50:33Z,contract
+Adnan Januzaj,Sevilla,Free agent,0,2026-06-17T13:49:46Z,contract
+Javi Galán,Atletico Madrid,Free agent,0,2026-06-17T13:47:44Z,contract
+Diego Rico,Getafe,Free agent,0,2026-06-17T13:44:42Z,contract
+Domingos Duarte,Getafe,Free agent,0,2026-06-17T13:44:09Z,contract
+Victor Chust,Cadiz,Elche,0,2026-06-17T13:41:53Z,contract
+Bartlomiej Pawlowski,Widzew Łódź,Free agent,0,2026-06-17T13:38:04Z,contract
+Sebastian Walukiewicz,Torino,Sassuolo,5000000,2026-06-17T13:34:58Z,contract
+Ruan,Sassuolo,Atletico MG,3500000,2026-06-17T13:34:15Z,contract
+Daley Blind,Girona,Free agent,0,2026-06-17T13:27:59Z,contract
+Kwasi Sibo,Real Oviedo,Free agent,0,2026-06-17T13:25:50Z,contract
+Otar Mamageishvili,Famalicao,Wolfsberger AC,0,2026-06-17T11:35:01Z,on loan
+Takuma Ominami,OH Leuven,V-Varen Nagasaki,900000,2026-06-17T11:24:37Z,contract
+Philipp Schulze,SC Verl,Górnik Zabrze,0,2026-06-17T11:05:13Z,contract
+Mickaël Biron,1. FC Nürnberg,Batman Petrolspor,0,2026-06-17T10:51:42Z,on loan
+Chris Kouakou,Sarpsborg 08,Ironi Tiberias,0,2026-06-17T10:25:38Z,contract
+Gad Amos,Hapoel Tel Aviv,Ironi Tiberias,0,2026-06-17T10:10:31Z,contract
+Jonas Krumrey,Holstein Kiel,VfL Osnabrück,0,2026-06-17T09:25:54Z,on loan
+Facundo Castelli,Club Atlético Estudiantes,Deportivo Garcilaso,0,2026-06-17T09:21:37Z,on loan
+Fabio Torsiello,Darmstadt,Alemannia Aachen,0,2026-06-17T09:03:09Z,on loan
+Issa Soumaré,Le Havre,Rennes,0,2026-06-17T08:48:25Z,contract
+Ettore Gliozzi,Modena,Mantova,0,2026-06-17T07:50:35Z,contract
+Fahd Moufi,Orenburg,Baltika,500000,2026-06-17T07:41:09Z,contract
+Alessandro Sorrentino,Monza,Padova,0,2026-06-17T07:37:16Z,contract
+Artem Timofeev,Lokomotiv,Free agent,0,2026-06-17T07:32:02Z,contract
+Tamás Szucs,Debrecen,Famalicao,0,2026-06-17T07:23:11Z,contract
+Aske Adelgaard,Go Ahead Eagles,FC Twente,2000000,2026-06-17T07:15:03Z,contract
+Maksymilian Sznaucner,PAOK Thessaloniki,Arka Gdynia,0,2026-06-17T03:42:12Z,contract
+Branislav Pindroch,Górnik Zabrze,Free agent,0,2026-06-16T22:52:35Z,contract
+Lukasz Budzilek,Górnik Zabrze,Free agent,0,2026-06-16T22:51:56Z,contract
+Jenson Metcalfe,Bradford,Millwall,0,2026-06-16T22:49:53Z,contract
+Ondrej Zmrzly,Slavia Prague,Górnik Zabrze,500000,2026-06-16T21:30:05Z,contract
+Miquel Parera,Racing de Ferrol,Cultural Leonesa,0,2026-06-16T21:27:30Z,contract
+Erik Prekop,Slavia Prague,Górnik Zabrze,1000000,2026-06-16T21:06:12Z,contract
+Patrik Hellebrand,Górnik Zabrze,Korona Kielce,1700000,2026-06-16T21:02:14Z,contract
+Wiktor Nowak,Górnik Zabrze,Slavia Prague,0,2026-06-16T20:20:51Z,contract
+Bruno Durdov,Hajduk Split,Górnik Zabrze,0,2026-06-16T20:06:49Z,contract
+Izan González,UD Cornella,Girona,300000,2026-06-16T17:36:55Z,contract
+Darius Olaru,FCSB,Union St.Gilloise,0,2026-06-16T16:57:51Z,contract
+Stanley Iheanacho,Mafra,FC Midtjylland,0,2026-06-16T16:53:15Z,contract
+Toyosi Olusanya,Houston,Aberdeen,0,2026-06-16T16:47:46Z,contract
+Tjas Begic,Parma,Sampdoria,1200000,2026-06-16T16:45:45Z,contract
+Daisuke Yokota,Gent,Hannover 96,2000000,2026-06-16T16:43:21Z,contract
+Paul Hennrich,Hoffenheim,FC Heidenheim,1500000,2026-06-16T16:41:35Z,contract
+Anderson,BW Linz,Grazer AK,0,2026-06-16T16:38:44Z,contract
+Marek Icha,Slovan Liberec,Pardubice,830000,2026-06-16T16:34:32Z,contract
+Antonio Van Wyk,Ried,Mamelodi Sundowns FC,1000000,2026-06-16T16:27:15Z,contract
+Lukas Malicsek,Admira Wacker,Ried,0,2026-06-16T16:23:52Z,contract
+Florian Hellstern,VfB Stuttgart,Greuther Fürth,0,2026-06-16T15:16:59Z,on loan
+Álvaro Morata,Milan,Como,12000000,2026-06-16T14:19:50Z,contract
+Dani Tasende,Real Zaragoza,Cordoba,0,2026-06-16T14:13:00Z,contract
+Jorge Sáenz,Leganes,Sporting Gijon,0,2026-06-16T14:07:41Z,contract
+Aisar Ahmed,AD Ceuta,Real Oviedo,0,2026-06-16T13:55:42Z,contract
+Michael Forbes,West Ham,Dundee United,0,2026-06-16T13:54:10Z,contract
+Arouna Sangante,Le Havre,Sevilla,0,2026-06-16T13:28:23Z,contract
+Simen Hestnes,KFUM,Häcken,0,2026-06-16T12:02:16Z,contract
+Christian Burgess,Union St.Gilloise,Gent,0,2026-06-16T11:48:54Z,contract
+Finn Stokkers,Go Ahead Eagles,Free agent,0,2026-06-16T11:40:20Z,contract
+Sven Jansen,Go Ahead Eagles,Free agent,0,2026-06-16T11:38:48Z,contract
+Luca Plogmann,Go Ahead Eagles,Free agent,0,2026-06-16T11:36:58Z,contract
+Niels Martens,Fortuna Sittard,Free agent,0,2026-06-16T11:17:03Z,contract
+Nick Marsman,Fortuna Sittard,Free agent,0,2026-06-16T11:15:31Z,contract
+Tristan Schenkhuizen,Fortuna Sittard,Free agent,0,2026-06-16T11:08:57Z,contract
+Paul Gladon,Fortuna Sittard,NAC Breda,0,2026-06-16T10:56:21Z,contract
+Kaj Sierhuis,Fortuna Sittard,Free agent,0,2026-06-16T10:50:52Z,contract
+Benjamin Machini,Hapoel Haifa,Hapoel Kfar Saba,0,2026-06-16T10:33:01Z,contract
+Alessandro Zanoli,Napoli,Udinese,5000000,2026-06-16T10:22:09Z,contract
+Santiago González,Atletico Grau,Free agent,0,2026-06-16T09:15:53Z,contract
+Emiliano Franco,Atletico Grau,Deportivo Moron,0,2026-06-16T09:15:24Z,contract
+Matej Koubek,FC Zlin,Ruzomberok,0,2026-06-16T07:43:49Z,contract
+Adam Gazi,MFK Skalica,FC Zlin,0,2026-06-16T07:39:40Z,contract
+Oscar Jiménez,León,Atlante,0,2026-06-16T07:29:31Z,contract
+Karim Kimvuidi,Orlando Pirates,Hapoel Petah Tikva,0,2026-06-16T07:28:51Z,contract
+Diogo Bagüí,Tijuana,Atlante,0,2026-06-16T07:27:32Z,on loan
+Harel Shalom,Hapoel Jerusalem,Hapoel Petah Tikva,0,2026-06-16T07:26:41Z,contract
+Guy Badash,Hapoel Jerusalem,Hapoel Petah Tikva,0,2026-06-16T07:26:40Z,contract
+Kail Boudache,Nice,Lyon,0,2026-06-16T06:36:52Z,contract
+Marcel Lotka,Düsseldorf,Energie Cottbus,0,2026-06-16T06:34:48Z,contract
+Dominik Baumgartner,Wolfsberger AC,Cracovia,0,2026-06-16T06:32:03Z,contract
+Anthony Lopes,Nantes,Angers,0,2026-06-16T06:29:24Z,contract
+Noah Weisshaupt,Freiburg,Darmstadt,0,2026-06-16T06:26:23Z,contract
+Niv Yehoshua,Maccabi Petach Tikva,Hapoel Beer Sheva,1500000,2026-06-16T06:22:01Z,contract
+Ferrán Ruiz,Girona,Terrassa,0,2026-06-16T06:19:22Z,contract
+Costinha,Olympiacos,Brighton,12700000,2026-06-16T06:15:46Z,contract
+Diego Fuentes,Racing Santander,Real Jaen,0,2026-06-16T06:06:48Z,contract
+Jordan Guivin,Asociacion Deportiva Tarma,Universitario de Deportes,0,2026-06-16T05:47:23Z,contract
+Isaiah Okafor,FC Zürich,Wil,0,2026-06-16T04:57:13Z,contract
+Ivan Cavaleiro,FC Zürich,Petro Atletico,0,2026-06-16T04:29:11Z,contract
+Janis Lüthi,Young Boys,Xamax,0,2026-06-16T04:20:28Z,on loan
+Yvan Dibango,Kryvbas,LASK,0,2026-06-16T04:08:18Z,contract
+Johan Solstad-Noeis,Tromsø,Lyn,0,2026-06-16T03:08:37Z,on loan
+Jani Atanasov,AE Larissa,Aktobe,0,2026-06-16T02:53:12Z,contract
+Patrick Kpozo,Banik Ostrava,FC Zhenis,0,2026-06-16T02:47:53Z,contract
+Dominik Franke,Thun,Zalgiris Vilnius,0,2026-06-16T02:35:32Z,contract
+Ilan Hurtevent,Kortrijk,Union St.Gilloise,0,2026-06-15T23:18:43Z,contract
+Wes Harding,Millwall,Plymouth,0,2026-06-15T23:05:56Z,contract
+Nicolò Zaniolo,Galatasaray,Udinese,5000000,2026-06-15T22:58:13Z,contract
+Ilias Bronkhorst,Excelsior,Free agent,0,2026-06-15T20:50:50Z,contract
+Arthur Zagré,Excelsior,Free agent,0,2026-06-15T20:44:22Z,contract
+Daniël Deen,AZ Alkmaar,Free agent,0,2026-06-15T20:39:24Z,contract
+Takehiro Tomiyasu,Ajax,Free agent,0,2026-06-15T20:34:51Z,contract
+Martin Hongla,Granada,Aris Thessaloniki,1300000,2026-06-15T18:25:52Z,contract
+Kaj de Rooij,PEC Zwolle,Real Valladolid,0,2026-06-15T18:24:43Z,contract
+Robin van Duiven,PSV Eindhoven,Real Valladolid,0,2026-06-15T18:23:04Z,contract
+Alberto Dadie,Real Sociedad B,Free agent,0,2026-06-15T18:12:06Z,contract
+Guilherme Fernandes,Real Valladolid,Free agent,0,2026-06-15T18:07:56Z,contract
+Mario Maroto,Real Valladolid,Free agent,0,2026-06-15T18:06:58Z,contract
+Brian Oliván,Sporting Gijon,Free agent,0,2026-06-15T18:05:27Z,contract
+Kevin Vázquez,Sporting Gijon,Free agent,0,2026-06-15T18:04:55Z,contract
+Eric Curbelo,Sporting Gijon,Free agent,0,2026-06-15T18:04:25Z,contract
+Christian Sánchez,Sporting Gijon,Free agent,0,2026-06-15T18:03:48Z,contract
+Alejandro Meléndez,Albacete,Free agent,0,2026-06-15T17:53:05Z,contract
+Raúl Lizoain,Albacete,Free agent,0,2026-06-15T17:51:45Z,contract
+Conor Townsend,Ipswich,Free agent,0,2026-06-15T17:44:11Z,contract
+Jérémie Boga,Nice,Juventus,5000000,2026-06-15T17:43:07Z,contract
+Matei Cristian Ilie,CFR Cluj,Kasımpaşa,500000,2026-06-15T16:52:52Z,contract
+Noah Fenyö,Frankfurt,Ujpest,0,2026-06-15T16:35:59Z,contract
+Eric Hunál,Dukla Praha,Slavia Prague,0,2026-06-15T16:28:26Z,contract
+Dejan Djokic,Sion,FC Vaduz,0,2026-06-15T14:14:54Z,contract
+Ville Koski,NK Istra 1961,Deportivo Alaves,0,2026-06-15T14:01:48Z,contract
+Storm Strand-Kolbjørnsen,Start,Åsane,0,2026-06-15T11:42:19Z,on loan
+Zeno Van Den Bosch,Royal Antwerp,Union Berlin,0,2026-06-15T11:40:53Z,contract
+Joachim Prent-Eckbo,KFUM,Arendal Fotball,0,2026-06-15T11:36:19Z,on loan
+Markus Edner Wæhler,Lillestrøm,Strømmen,0,2026-06-15T11:29:47Z,on loan
+Jesper Eikrem,Brann,Åsane,0,2026-06-15T11:25:24Z,on loan
+Marc Cucurella,Chelsea,Real Madrid,55000000,2026-06-15T11:22:32Z,contract
+Marc Gual,Rio Ave,Kairat Almaty,0,2026-06-15T11:20:56Z,contract
+Stepan Oganesyan,Orenburg,Free agent,0,2026-06-15T10:58:15Z,contract
+Irakli Kvekveskiri,Orenburg,Free agent,0,2026-06-15T10:56:34Z,contract
+Kiki Kouyaté,Royal Antwerp,Al Khaleej,0,2026-06-15T10:51:21Z,contract
+Francis Onyeka,Leverkusen,Elversberg,0,2026-06-15T10:16:50Z,on loan
+Vladan Bubanja,Orenburg,FC Rapid,0,2026-06-15T10:16:35Z,on loan
+Marco Wolff,Maccabi Petach Tikva,Hapoel Beer Sheva,250000,2026-06-15T06:27:24Z,contract
+Maxence Maisonneuve,RAAL La Louviere,Wisła Kraków,0,2026-06-14T21:46:32Z,contract
+Gaizka Larrazabal,Casa Pia AC,Free agent,0,2026-06-14T21:39:10Z,contract
+Rafael Brito,Casa Pia AC,Free agent,0,2026-06-14T21:37:30Z,contract
+Rafa Soares,Famalicao,Free agent,0,2026-06-14T21:28:57Z,contract
+Ali Hamdi,Tala&#039;ea El Gaish,National Bank,0,2026-06-14T14:03:47Z,contract
+Lutfi Dalipi,Young Boys,FC Vaduz,0,2026-06-14T10:00:30Z,on loan
+Rotem Keller,Maccabi Netanya,Debrecen,0,2026-06-14T09:46:34Z,contract
+Márk Koszta,Hapoel Petah Tikva,Vasas Budapest,0,2026-06-14T09:43:59Z,contract
+Ebrima Singhateh,Jablonec,Sparta Prague,0,2026-06-14T09:25:51Z,contract
+Daniel Vasulín,Viktoria Plzen,FC Zbrojovka Brno,0,2026-06-14T09:13:29Z,contract
+Ladislav Almási,Banik Ostrava,Bohemians 1905,0,2026-06-14T09:08:32Z,contract
+Daniel Smiga,Slavia Prague,FC Zlin,0,2026-06-14T09:04:21Z,contract
+Lukás Hulka,Bohemians 1905,Slovan Liberec,0,2026-06-14T08:57:32Z,contract
+Kristián Vallo,Karvina,Dukla Banska Bystrica,0,2026-06-14T08:47:37Z,contract
+Mislav Orsic,Pafos FC,Dinamo Zagreb,0,2026-06-14T07:47:02Z,contract
+Lucky Ezeh,Karvina,FC Zbrojovka Brno,0,2026-06-14T07:39:36Z,contract
+Petr Sevcík,Slavia Prague,FC Zbrojovka Brno,0,2026-06-14T07:39:35Z,contract
+Stephane Keller,AEL Limassol,Al Ittihad,1000000,2026-06-14T07:31:23Z,contract
+Lovro Banovec,Vukovar 91,Slaven,0,2026-06-14T07:03:08Z,contract
+Blaz Boskovic,NK Lokomotiva,Debrecen,0,2026-06-14T06:48:03Z,contract
+Jakov Puljic,Vukovar 91,Rijeka,0,2026-06-14T06:45:26Z,contract
+Israel Alba,Bucaramanga,Alianza FC,0,2026-06-14T06:37:26Z,contract
+Leyner Palacios,Leones,Alianza FC,0,2026-06-14T06:33:56Z,contract
+Erik Riđan,Slaven,Borac Banja Luka,0,2026-06-14T06:08:17Z,contract
+Akpa Chukwu Hemsley,RFC Seraing,Zulte Waregem,0,2026-06-14T05:42:33Z,contract
+Joshua Rawlins,Melbourne Victory,Dundee United,0,2026-06-14T05:11:14Z,contract
+Marco Schabauer,Admira Wacker,Wolfsberger AC,0,2026-06-13T18:12:39Z,contract
+Ewen Jaouen,Reims,Newcastle,21500000,2026-06-13T13:39:55Z,contract
+Amor Layouni,Häcken,AEK Larnaca,0,2026-06-13T10:54:20Z,contract
+Dorian Derbaci,FC Aarau,Thun,0,2026-06-13T10:37:25Z,contract
+Javier Fernández,Bayern München,1. FC Nürnberg,0,2026-06-13T10:19:25Z,on loan
+Franco Pardo,Racing Club,Santos,1730000,2026-06-13T10:16:37Z,contract
+Sebastian Jørgensen,Malmö FF,AGF,0,2026-06-13T10:12:49Z,contract
+Mikkel Løndal,Viborg,Hobro,0,2026-06-13T10:10:06Z,contract
+Lukas Bornschein,Hamburger SV,VfL Osnabrück,0,2026-06-13T09:55:08Z,contract
+Joël Abu Hanna,Levadiakos,VfL Osnabrück,0,2026-06-13T09:48:57Z,contract
+Konstantinos Fortounis,Al Khaleej,Olympiacos,0,2026-06-13T09:40:15Z,contract
+Wout Weghorst,Ajax,Free agent,0,2026-06-13T09:38:46Z,contract
+Savvas Mourgos,AE Larissa,Panionios,0,2026-06-13T09:36:31Z,contract
+Evgen Cheberko,Columbus,LAFC,0,2026-06-13T07:22:14Z,contract
+Harry Cornick,Bristol City,Free agent,0,2026-06-12T22:21:47Z,contract
+Sam Morsy,Bristol City,Free agent,0,2026-06-12T22:21:17Z,contract
+Mark Sykes,Bristol City,Free agent,0,2026-06-12T22:20:43Z,contract
+Charlie Taylor,Southampton,Free agent,0,2026-06-12T22:19:43Z,contract
+William Smallbone,Southampton,Free agent,0,2026-06-12T22:18:58Z,contract
+Alex McCarthy,Southampton,Free agent,0,2026-06-12T22:17:51Z,contract
+Joe Aribo,Southampton,Free agent,0,2026-06-12T22:16:53Z,contract
+Amadou Ba-Sy,Rouen,Hearts,200000,2026-06-12T20:33:40Z,contract
+Ross Stewart,Southampton,Free agent,0,2026-06-12T18:47:29Z,contract
+Leny Meyer,VfB Stuttgart II,Famalicao,0,2026-06-12T17:53:46Z,contract
+Fatih Kaya,Wehen Wiesbaden,Samsunspor,0,2026-06-12T17:46:41Z,contract
+Nobel Mendy,Real Betis,Rayo Vallecano,0,2026-06-12T17:45:47Z,contract
+Dani van den Heuvel,Club Brugge,OH Leuven,0,2026-06-12T17:41:32Z,contract
+Muhammed Djetei,Maccabi Netanya,SD Huesca,0,2026-06-12T16:32:23Z,contract
+Fabio Gruber,1. FC Nürnberg,Mainz,3000000,2026-06-12T15:24:56Z,contract
+Oriol Romeu,Southampton,Free agent,0,2026-06-12T14:50:28Z,contract
+Jahmai Simpson-Pusey,Man City,Köln,5000000,2026-06-12T14:49:12Z,contract
+Alexios Kalogeropoulos,Olympiacos,1. FC Nürnberg,0,2026-06-12T14:43:49Z,contract
+André Silva,Elche,FC Porto,0,2026-06-12T14:28:46Z,contract
+Denis Huseinbasic,Köln,Braga,0,2026-06-12T13:27:34Z,contract
+Florentino,Benfica,Burnley,24000000,2026-06-12T13:17:47Z,contract
+Jurica Prsir,HNK Gorica,Wisła Płock,0,2026-06-12T12:31:04Z,contract
+Jhon Solís,Girona,Birmingham,7000000,2026-06-12T12:09:43Z,contract
+Oleksandr Pyshchur,Gyori ETO II,Girona,900000,2026-06-12T12:08:10Z,contract
+Maurice Krattenmacher,Bayern München,Elversberg,0,2026-06-12T11:52:48Z,contract
+Michael Gregoritsch,Brøndby IF,Augsburg,500000,2026-06-12T11:35:24Z,contract
+Dominik Schmid,Basel,Salzburg,3000000,2026-06-12T11:11:24Z,contract
+Christian Vásquez,Free agent,Atletico Grau,0,2026-06-12T09:20:30Z,contract
+Ivan Lepskiy,Dinamo,Krylya Sovetov,300000,2026-06-12T09:15:12Z,contract
+Julio Alonso,SD Huesca,Kalamata,0,2026-06-12T08:55:23Z,contract
+Kenneth Vargas,Hearts,Kalamata,0,2026-06-12T08:48:37Z,on loan
+Ben Davies,Rangers,Bolton,0,2026-06-12T08:45:19Z,contract
+Leonardo Bittencourt,Werder Bremen,Energie Cottbus,0,2026-06-12T08:37:40Z,contract
+Shio Fukuda,M'gladbach,Karlsruher SC,700000,2026-06-12T08:33:52Z,contract
+Emanuel Iñiguez,Aldosivi,Deportivo Moron,0,2026-06-12T08:23:08Z,contract
+Sebastián Zaracho,Guarani,Rosario Central,0,2026-06-12T08:00:21Z,contract
+Lucas Bruera,Carabobo FC,Estudiantes de Rio Cuarto,0,2026-06-12T07:36:16Z,on loan
+Kenan Kurtovic,Kasımpaşa,Mura,0,2026-06-11T22:47:50Z,on loan
+Chukwubuike Adamu,Freiburg,Schalke 04,800000,2026-06-11T20:30:32Z,contract
+Tommaso Baldanzi,Roma,Genoa,9500000,2026-06-11T20:11:16Z,contract
+Janio Pósito,Los Chankas,Juan Pablo II,0,2026-06-11T19:58:35Z,contract
+Ricardo Esgaio,Karagümrük,Gil Vicente,0,2026-06-11T19:39:57Z,contract
+Nemanja Gudelj,Sevilla,Free agent,0,2026-06-11T19:24:03Z,contract
+Kenan Kurtovic,Mura,Kasımpaşa,0,2026-06-11T18:51:56Z,contract
+Dion Kacuri,Basel,Austria Lustenau,0,2026-06-11T17:49:08Z,on loan
+Nikolay Sysuev,Orenburg,Free agent,0,2026-06-11T16:21:38Z,contract
+Feyttullah Gürlük,Orenburg,Free agent,0,2026-06-11T16:20:33Z,contract
+Finn van Breemen,Basel,Famalicao,0,2026-06-11T16:16:01Z,contract
+Ondrej Kricfalusi,Banik Ostrava,Union St.Gilloise,5000000,2026-06-11T16:11:07Z,contract
+Juan Iglesias,Free agent,Sevilla,0,2026-06-11T13:36:23Z,contract
+Mads Abrahamsen,OB,Free agent,0,2026-06-11T12:32:35Z,contract
+Gustav Grubbe,OB,Free agent,0,2026-06-11T12:31:13Z,contract
+Tom Trybull,OB,Free agent,0,2026-06-11T12:29:33Z,contract
+Leeroy Owusu,OB,Free agent,0,2026-06-11T12:28:03Z,contract
+Ander Gorostidi,Gimnastic,SD Huesca,0,2026-06-11T12:22:51Z,contract
+Kevin Mbabu,FC Midtjylland,Free agent,0,2026-06-11T12:09:05Z,contract
+Viktor Claesson,FC København,Free agent,0,2026-06-11T12:04:39Z,contract
+Aurélio Buta,FC København,Free agent,0,2026-06-11T12:02:00Z,contract
+Zanka,FC København,Free agent,0,2026-06-11T12:00:14Z,contract
+Keisuke Goto,Anderlecht,Freiburg,0,2026-06-11T11:52:41Z,contract
+Álvaro Martin,FC Andorra,Free agent,0,2026-06-11T11:51:41Z,contract
+Álvaro Lemos,Granada,Free agent,0,2026-06-11T10:54:16Z,contract
+Bambo Diaby,Elche,Free agent,0,2026-06-11T10:52:26Z,contract
+Álex Sola,Granada,Free agent,0,2026-06-11T10:51:38Z,contract
+Rifat Zhemaletdinov,Akhmat,Free agent,0,2026-06-11T10:49:45Z,contract
+Enzo Bardeli,Dunkerque,Levante,0,2026-06-11T10:49:14Z,contract
+Gernot Trauner,Feyenoord,Free agent,0,2026-06-11T10:46:01Z,contract
+Anselmo MacNulty,PEC Zwolle,Magdeburg,0,2026-06-11T10:43:36Z,contract
+Raheem Sterling,Feyenoord,Free agent,0,2026-06-11T10:39:30Z,contract
+Sekou Gassama,Universitario de Deportes,Free agent,0,2026-06-11T10:38:15Z,contract
+Luis Benítes,Asociacion Deportiva Tarma,Atletico Grau,0,2026-06-11T10:36:35Z,contract
+Maciej Famulak,Wisła Płock,Free agent,0,2026-06-11T10:33:25Z,contract
+Jeppe Erenbjerg,Zulte Waregem,Genk,5000000,2026-06-11T10:30:27Z,contract
+Caleb Ekuban,Genoa,Free agent,0,2026-06-11T10:23:14Z,contract
+Jadon Sancho,Man United,Free agent,0,2026-06-11T09:34:13Z,contract
+Tyrell Malacia,Man United,Free agent,0,2026-06-11T09:31:49Z,contract
+Casemiro,Man United,Free agent,0,2026-06-11T09:30:04Z,contract
+John Stones,Man City,Free agent,0,2026-06-11T09:27:02Z,contract
+Bernardo Silva,Man City,Real Madrid,0,2026-06-11T09:26:09Z,contract
+Kennet Eichhorn,Hertha BSC,Leverkusen,9000000,2026-06-10T22:36:31Z,contract
+Pawel Dawidowicz,Raków Częstochowa,Free agent,0,2026-06-10T18:56:43Z,contract
+Noham Kamara,PSG,Lyon,4100000,2026-06-10T18:45:21Z,contract
+Fatih Kurucuk,Karagümrük,Free agent,0,2026-06-10T18:39:46Z,contract
+Marcos Senesi,Bournemouth,Tottenham,0,2026-06-10T18:20:21Z,contract

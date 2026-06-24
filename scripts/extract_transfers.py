@@ -10,7 +10,7 @@ headers = {
     "x-rapidapi-host": "free-api-live-football-data.p.rapidapi.com"
 }
 
-def extract_top_transfers(total_pages=3):
+def extract_top_transfers(total_pages=10):
     url = "https://free-api-live-football-data.p.rapidapi.com/football-get-all-transfers"
     all_transfers = []
 
@@ -51,4 +51,4 @@ def extract_top_transfers(total_pages=3):
         print("⚠️ Aucune donnée récupérée.")
 
 if __name__ == "__main__":
-    extract_top_transfers(total_pages=3)
+    extract_top_transfers(total_pages=10)
