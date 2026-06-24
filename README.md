@@ -180,13 +180,19 @@ services:
 
 ## 📊 Dashboard Power BI
 
-Le mart `fct_transfer_analysis` alimente un dashboard Power BI comprenant :
+Le mart `fct_transfer_analysis` alimente un dashboard Power BI interactif comprenant :
 
-- **Suivi des derniers transferts** — joueur, club de départ, club d'arrivée
-- **Analyse des montants** — répartition par type de transfert
-- **Filtres dynamiques** — par club, par période
+- **3 KPIs clés** — nombre de transferts analysés, montant total, montant moyen
+- **Évolution temporelle** — courbe des montants de transferts jour par jour
+- **Top 10 des transferts les plus chers** — classement par montant
+- **Répartition par type de transfert** — contrat définitif vs prêt
+- **Filtres dynamiques** — par type de transfert et par club
+
+Sur cette extraction, **500 transferts** ont été analysés, représentant un montant total de plus de 450M€.
 
 ![Aperçu du dashboard](images/football_dashboard_preview.png)
+
+> *Le fichier `.pbix` étant local, une version publique (Power BI Service ou Tableau Public) sera ajoutée prochainement.*
 
 
 ---
