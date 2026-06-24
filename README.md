@@ -188,7 +188,6 @@ Le mart `fct_transfer_analysis` alimente un dashboard Power BI comprenant :
 
 ![Aperçu du dashboard](images/football_dashboard_preview.png)
 
-> *Le fichier `.pbix` étant local, une version publique (Tableau Public ou Power BI Service) sera ajoutée prochainement.*
 
 ---
 
