@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fct_transfer_analysis
+    description: >
+      Table de faits alimentant le dashboard. Incrémentale : l'historique
+      s'accumule au fil des runs, au-delà de la fenêtre glissante de l'API.
+    columns:
+      - name: transfer_id
+        tests:
+          - unique
+          - not_null
+      - name: montant
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                inclusive: true
+      - name: type_transfert
+        tests:
+          - not_null

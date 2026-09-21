@@ -4,13 +4,19 @@ services:
     entrypoint: ["python", "scripts/extract_transfers.py"]
     volumes:
       - .:/usr/app
+      - ./credentials.json:/usr/app/credentials.json:ro
     env_file:
       - .env
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/usr/app/credentials.json
 
   dbt:
     build: .
     volumes:
       - .:/usr/app
-      - ./profiles.yml:/root/.dbt/profiles.yml
+      - ./profiles.yml:/root/.dbt/profiles.yml:ro
+      - ./credentials.json:/usr/app/credentials.json:ro
+    env_file:
+      - .env
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/usr/app/credentials.json

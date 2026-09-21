@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      DBT_PROFILES_DIR: ${{ github.workspace }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt ruff
+
+      - name: Lint Python
+        run: ruff check scripts/
+
+      - name: Validation des modeles dbt
+        # dbt parse ne se connecte pas a BigQuery : on valide la syntaxe
+        # des modeles et la coherence du graphe sans credentials.
+        env:
+          GCP_PROJECT: dummy
+          BQ_DATASET: dummy
+          GCP_SA_KEY: "{}"
+        run: |
+          cp profiles.yml.example profiles.yml
+          dbt deps
+          dbt parse --target prod

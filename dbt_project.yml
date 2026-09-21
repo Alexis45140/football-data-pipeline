@@ -7,17 +7,14 @@ profile: 'football_transformation'
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
-seed-paths: ["seeds"]
 macro-paths: ["macros"]
 
 models:
   football_transformation:
+    +persist_docs:
+      relation: true
+      columns: true
     staging:
       +materialized: view
     marts:
       +materialized: table
-
-seeds:
-  'football_transformation': 
-    +column_types:
-      date_transfert: STRING

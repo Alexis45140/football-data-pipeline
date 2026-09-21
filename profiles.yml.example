@@ -1,10 +1,21 @@
 football_transformation:
   target: dev
   outputs:
+
+    # Local : chemin vers la cle de service sur le poste
     dev:
       type: bigquery
       method: service-account
       project: your-project-id
       dataset: football_data
-      threads: 1
+      threads: 4
       keyfile: path/to/your/service-account.json
+
+    # CI : tout vient de l'environnement, aucun fichier sur disque
+    prod:
+      type: bigquery
+      method: service-account-json
+      project: "{{ env_var('GCP_PROJECT') }}"
+      dataset: "{{ env_var('BQ_DATASET') }}"
+      threads: 4
+      keyfile_json: "{{ env_var('GCP_SA_KEY') | as_native }}"

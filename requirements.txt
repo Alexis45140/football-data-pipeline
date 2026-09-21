@@ -1,3 +1,5 @@
 requests
 pandas
 python-dotenv
+google-cloud-bigquery
+dbt-bigquery>=1.10,<2.0

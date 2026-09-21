@@ -1,8 +1,15 @@
 version: 2
 
 sources:
-  - name: raw_football  # C'est le nom que j'appelle dans le SQL: {{ source('raw_football', ...) }}
-    database: my-project-foot-496012 # Mon ID de projet Google Cloud
-    schema: football_data      # Le nom du dataset dans BigQuery où sont tes données brutes
+  - name: raw_football
+    description: Donnees brutes chargees par scripts/extract_transfers.py
+    database: "{{ env_var('GCP_PROJECT', 'my-project-foot-496012') }}"
+    schema: "{{ env_var('BQ_DATASET', 'football_data') }}"
     tables:
-      - name: stg_transferts   # Le nom exact de la table dans BigQuery
+      - name: transfers_raw
+        description: Un append par execution du pipeline, partitionne sur _extracted_at
+        config:
+          loaded_at_field: _extracted_at
+          freshness:
+            warn_after: {count: 26, period: hour}
+            error_after: {count: 72, period: hour}

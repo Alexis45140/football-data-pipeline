@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_football_transfers
+    description: Transferts typés et dédoublonnés, une ligne par transfert
+    columns:
+      - name: transfer_id
+        description: Hash joueur + club d'arrivée + date, clé de déduplication
+        tests:
+          - unique
+          - not_null
+      - name: joueur
+        tests:
+          - not_null
+      - name: montant
+        description: Montant en euros, 0 pour un transfert libre ou un prêt sec
+        tests:
+          - not_null
+      - name: date_transfert
+        description: Null si l'API a renvoyé une date hors format ISO
+      - name: type_transfert
+        tests:
+          - not_null

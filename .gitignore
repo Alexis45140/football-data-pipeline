@@ -27,6 +27,3 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
-
-# API Keys
-RAPIDAPI_KEY=***CLE-REVOQUEE***
