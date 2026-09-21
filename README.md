@@ -1,137 +1,76 @@
-# ⚽ Pipeline Data ELT — Football Transfers Analytics (Python × BigQuery × dbt Core × Docker)
+# Football Transfers — pipeline ELT automatisé
 
-Ce dépôt héberge un projet de **Modern Data Stack** conteneurisé, simulant un environnement de production pour un **Analytics Engineer / Data Engineer**. L'objectif est d'extraire en temps réel les données de transferts de football via une API, de les charger dans **BigQuery**, de les transformer avec **dbt Core**, et de restituer les résultats dans un **dashboard Power BI**.
+[![pipeline](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/pipeline.yml/badge.svg)](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/pipeline.yml)
+[![ci](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/ci.yml)
+
+Pipeline de données conteneurisé qui extrait les transferts de football depuis une API, les charge dans BigQuery, les transforme avec dbt et les restitue dans un dashboard Power BI.
+
+Il tourne sans intervention : un workflow GitHub Actions déclenche l'extraction puis `dbt build` tous les jours à 06:00 UTC. Aucune commande à lancer à la main, aucun fichier de données à committer.
 
 ---
 
-## 🏗️ Architecture Globale du Pipeline (ELT)
+## Architecture
 
 ```
 API Football (RapidAPI)
-        ↓
-   Extraction Python (conteneur Docker dédié)
-        ↓
-   BigQuery — table brute `transfers_raw` (append + partition)
-        ↓
-   dbt Core — Staging (stg_football_transfers)
-        ↓
-   dbt Core — Marts (fct_transfer_analysis)
-        ↓
-   Power BI (Dashboard interactif)
+        |
+        v
+Extraction Python  ------->  BigQuery  transfers_raw
+                             (append horodaté, partitionné)
+                                  |
+                                  v
+                        dbt  stg_football_transfers
+                             (typage + déduplication)
+                                  |
+                                  v
+                        dbt  fct_transfer_analysis
+                             (table de faits)
+                                  |
+                                  v
+                             Power BI
 ```
 
-L'ensemble tourne seul : un workflow GitHub Actions déclenche l'extraction puis
-`dbt build` tous les jours à 06:00 UTC.
-
-Le pipeline suit une approche **ELT** moderne, entièrement conteneurisée :
-
-1. **Extract** — Récupération des transferts de joueurs via l'API RapidAPI (pagination multi-pages)
-2. **Load** — Écriture directe dans la table brute BigQuery, en append horodaté
-3. **Transform (Staging)** — Typage, déduplication et conversion des dates en `TIMESTAMP`
-4. **Transform (Marts)** — Table de faits reconstruite à chaque run depuis l'historique brut accumulé
-5. **Conteneurisation** — Deux services Docker indépendants : extraction et transformation
-6. **Orchestration** — GitHub Actions : run quotidien planifié, tests dbt bloquants
+L'approche est un ELT : on charge le brut tel quel, on transforme ensuite dans l'entrepôt. `transfers_raw` n'est jamais écrasée, chaque run y ajoute un lot horodaté. C'est elle qui porte l'historique ; les couches dbt au-dessus sont recalculables à tout moment.
 
 ---
 
-## 🛠️ Stack Technique
+## Stack
 
 | Outil | Rôle |
 |---|---|
-| **Python (requests, pandas, google-cloud-bigquery)** | Extraction API et chargement dans le warehouse |
-| **RapidAPI — Free API Live Football Data** | Source de données transferts |
-| **Google BigQuery** | Cloud Data Warehouse — stockage et calcul |
-| **dbt Core v1.11** | Transformation SQL modulaire — staging et marts |
-| **Docker & Docker Compose** | Conteneurisation des étapes extraction et transformation |
-| **GitHub Actions** | Orchestration planifiée et intégration continue |
-| **Power BI** | Visualisation et dashboard interactif |
-| **Git & GitHub** | Versioning |
+| Python — requests, pandas, google-cloud-bigquery | Extraction API et chargement dans l'entrepôt |
+| RapidAPI — Free API Live Football Data | Source des transferts |
+| Google BigQuery | Entrepôt de données |
+| dbt Core 1.12 | Transformations SQL, tests, documentation |
+| GitHub Actions | Orchestration planifiée et intégration continue |
+| Docker & Docker Compose | Exécution locale reproductible |
+| Power BI | Restitution |
 
 ---
 
-## 📂 Structure du Projet
+## Le pipeline en détail
 
-```
-football-data-pipeline/
-├── README.md
-├── dbt_project.yml
-├── requirements.txt
-├── Dockerfile
-├── docker-compose.yml
-├── profiles.yml.example
-├── packages.yml
-├── .env.example
-├── .github/
-│   └── workflows/
-│       ├── pipeline.yml       # run quotidien : extract + dbt build
-│       └── ci.yml             # lint + validation dbt sur chaque PR
-├── images/
-│   └── football_dashboard_preview.png
-├── data/
-│   └── sample_transferts.csv  # échantillon, hors pipeline
-├── scripts/
-│   └── extract_transfers.py
-└── models/
-    ├── staging/
-    │   ├── sources.yml
-    │   ├── schema.yml
-    │   └── stg_football_transfers.sql
-    └── marts/
-        ├── schema.yml
-        └── fct_transfer_analysis.sql
-```
+### Extraction — `scripts/extract_transfers.py`
 
----
-
-## 🧬 Détail du Pipeline
-
-### 1. Extraction — `scripts/extract_transfers.py`
-
-Récupère les transferts sur plusieurs pages via l'API RapidAPI, dédoublonne le lot et charge le résultat directement dans la table brute BigQuery, en append horodaté par `_extracted_at`. Plus aucun CSV intermédiaire à committer.
+Parcourt les pages de l'API, met les champs à plat, dédoublonne le lot puis écrit directement dans BigQuery. Pas de CSV intermédiaire : rien à committer entre deux runs.
 
 ```python
-def load_to_bigquery(df, project, dataset, table):
-    client = bigquery.Client(project=project)
-    table_id = f"{project}.{dataset}.{table}"
-
-    job_config = bigquery.LoadJobConfig(
-        schema=RAW_SCHEMA,
-        write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
-        time_partitioning=bigquery.TimePartitioning(field="_extracted_at"),
-    )
-    job = client.load_table_from_json(df.to_dict("records"), table_id, job_config=job_config)
-    job.result()
+job_config = bigquery.LoadJobConfig(
+    schema=RAW_SCHEMA,
+    write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
+    time_partitioning=bigquery.TimePartitioning(field="_extracted_at"),
+)
+job = client.load_table_from_json(df.to_dict("records"), table_id, job_config=job_config)
+job.result()
 ```
 
-L'appel API gère les retries (429 et 5xx) avec backoff exponentiel — indispensable pour un run planifié sans surveillance.
+Les appels rejouent sur 429 et 5xx avec un backoff exponentiel, et le script sort en code 1 si rien n'est récupéré — sans quoi un run planifié échouerait en silence.
 
-🔐 La clé API est gérée via une variable d'environnement (`.env`, jamais commitée).
+### Staging — `stg_football_transfers` (vue)
 
----
-
-### 2. Couche Staging — `stg_football_transfers.sql` (Vue)
-
-Type les colonnes, construit la clé `transfer_id` et dédoublonne : le même transfert revient à chaque run tant qu'il reste dans la fenêtre glissante de l'API.
+Type les colonnes, construit une clé `transfer_id` et dédoublonne. C'est la pièce centrale : l'API renvoie une fenêtre glissante, donc le même transfert revient à chaque run.
 
 ```sql
-{{ config(materialized='view') }}
-
-with source as (
-    select * from {{ source('raw_football', 'transfers_raw') }}
-),
-
-typed as (
-    select
-        to_hex(md5(concat(
-            coalesce(joueur, ''), '|',
-            coalesce(club_arrivee, ''), '|',
-            coalesce(date_transfert, '')
-        ))) as transfer_id,
-        ...
-        safe.parse_timestamp('%Y-%m-%dT%H:%M:%SZ', date_transfert) as date_transfert
-    from source
-),
-
 deduplicated as (
     select * except (rn)
     from (
@@ -142,15 +81,15 @@ deduplicated as (
     )
     where rn = 1
 )
-
-select * from deduplicated
 ```
 
----
+`safe.parse_timestamp` plutôt que `parse_timestamp` : une date hors format laisse un `null` au lieu de faire tomber le run entier.
 
-### 3. Couche Marts — `fct_transfer_analysis.sql` (Table)
+Sur les trois premiers runs, 1048 lignes brutes accumulées se sont réduites à 499 transferts uniques dans le mart.
 
-Table de faits alimentant le dashboard. L'accumulation ne se fait pas ici mais en amont : `transfers_raw` grossit à chaque run, le staging dédoublonne l'ensemble, et le mart est reconstruit par-dessus. L'historique dépasse donc la fenêtre glissante renvoyée par l'API, sans jamais recourir à du DML.
+### Mart — `fct_transfer_analysis` (table)
+
+Table de faits consommée par Power BI, partitionnée par mois sur `date_transfert` et clusterisée sur `type_transfert`.
 
 ```sql
 {{ config(
@@ -158,72 +97,35 @@ Table de faits alimentant le dashboard. L'accumulation ne se fait pas ici mais e
     partition_by={'field': 'date_transfert', 'data_type': 'timestamp', 'granularity': 'month'},
     cluster_by=['type_transfert']
 ) }}
-
-select ... from {{ ref('stg_football_transfers') }}
 ```
 
-### 4. Tests
+Elle est reconstruite à chaque run depuis l'intégralité de `transfers_raw`. L'accumulation se joue donc en amont, dans la couche brute, pas dans le mart — voir *Limites connues*.
 
-`dbt build` enchaîne modèles et tests dans l'ordre du graphe et s'arrête au premier échec : unicité et non-nullité de `transfer_id`, montants positifs, fraîcheur de la source. Un changement de schéma côté API casse le run au lieu de passer inaperçu dans le dashboard.
+### Tests
+
+Dix tests sur les deux couches : unicité et non-nullité de `transfer_id`, montants positifs, non-nullité du joueur et du type de transfert, fraîcheur de la source.
+
+`dbt build` enchaîne modèles et tests dans l'ordre du graphe et s'arrête au premier échec. Un changement de schéma côté API casse le run au lieu de se propager silencieusement jusqu'au dashboard.
 
 ---
 
-## 🐳 Conteneurisation — 2 services Docker indépendants
-
-```yaml
-services:
-  extract:
-    build: .
-    entrypoint: ["python", "scripts/extract_transfers.py"]
-    volumes:
-      - .:/usr/app
-    env_file:
-      - .env
-
-  dbt:
-    build: .
-    volumes:
-      - .:/usr/app
-      - ./profiles.yml:/root/.dbt/profiles.yml:ro
-      - ./credentials.json:/usr/app/credentials.json:ro
-    env_file:
-      - .env
-    environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=/usr/app/credentials.json
-```
-
-Le service `extract` gère uniquement la récupération des données API. Le service `dbt` gère uniquement la transformation. Les deux partagent la même image de base mais s'exécutent indépendamment.
-
----
-
-## ⚙️ Orchestration — GitHub Actions
+## Orchestration
 
 Deux workflows, aucun serveur à maintenir.
 
-**`pipeline.yml` — run quotidien**
+**`pipeline.yml`** — tous les jours à 06:00 UTC, déclenchable aussi à la main. Authentification GCP, extraction, `dbt deps && dbt build`, puis publication des artefacts `target/` (dont `run_results.json` et la documentation dbt) pendant 14 jours. Un garde `concurrency` empêche deux runs d'écrire en même temps dans la table brute.
 
-```yaml
-on:
-  schedule:
-    - cron: "0 6 * * *"
-  workflow_dispatch:
-```
+**`ci.yml`** — sur chaque pull request et chaque push sur `main` : `ruff` sur le Python et `dbt parse` sur les modèles. `dbt parse` valide la syntaxe et la cohérence du graphe sans se connecter à BigQuery, donc la CI tourne sans le moindre credential.
 
-Authentification GCP via `google-github-actions/auth`, extraction, puis `dbt deps && dbt build --target prod`. Le job échoue si un test dbt échoue, et les artefacts `target/` (dont `run_results.json` et la doc dbt) sont conservés 14 jours. Un garde `concurrency` empêche deux runs d'écrire en même temps dans la table brute.
-
-**`ci.yml` — sur chaque PR**
-
-`ruff` sur le Python et `dbt parse` sur les modèles. `dbt parse` valide la syntaxe et la cohérence du graphe sans se connecter à BigQuery : la CI tourne donc sans credentials.
-
-**Secrets à créer** dans *Settings → Secrets and variables → Actions* :
+Secrets attendus dans *Settings → Secrets and variables → Actions* :
 
 | Secret | Contenu |
 |---|---|
 | `RAPIDAPI_KEY` | Clé RapidAPI |
 | `GCP_PROJECT` | ID du projet Google Cloud |
-| `GCP_SA_KEY` | Contenu **complet** du JSON de compte de service |
+| `GCP_SA_KEY` | JSON complet du compte de service |
 
-En CI, aucun fichier de credentials n'existe sur disque : le profil dbt lit `keyfile_json` depuis l'environnement.
+En CI, aucun fichier de credentials n'existe sur disque : le profil dbt lit la clé depuis l'environnement.
 
 ```yaml
 prod:
@@ -235,66 +137,52 @@ prod:
 
 ---
 
-## ⚠️ Limites connues
+## Limites connues
 
-Le projet tourne sur un **bac à sable BigQuery**, c'est-à-dire un projet GCP sans compte de facturation. Deux contraintes en découlent, assumées :
+Le projet tourne sur un bac à sable BigQuery, c'est-à-dire un projet GCP sans compte de facturation. Deux contraintes en découlent, assumées :
 
-- **Pas de DML.** `INSERT`, `UPDATE`, `DELETE` et `MERGE` sont refusés. Le mart est donc reconstruit par `CREATE TABLE AS SELECT` plutôt que par un `merge` incrémental. À ce volume la différence de coût est nulle ; elle deviendrait significative à partir de quelques millions de lignes.
+- **Pas de DML.** `INSERT`, `UPDATE`, `DELETE` et `MERGE` sont refusés. Le mart est donc reconstruit par `CREATE TABLE AS SELECT` au lieu d'un `merge` incrémental. À ce volume la différence de coût est nulle ; elle deviendrait significative à partir de quelques millions de lignes, où l'incrémental s'imposerait.
 - **Rétention de 60 jours.** Toute table du sandbox expire automatiquement au bout de 60 jours. L'historique accumulé est donc une fenêtre glissante de 60 jours, pas un historique complet.
 
-Activer la facturation sur le projet lève les deux limites d'un coup, sans quitter le free tier (1 Tio de requêtes et 10 Gio de stockage gratuits par mois). À ce volume de données, la facture resterait à zéro.
+Activer la facturation lève les deux limites d'un coup, sans quitter le free tier (1 Tio de requêtes et 10 Gio de stockage gratuits par mois). À ce volume, la facture resterait à zéro.
+
+Le rafraîchissement Power BI reste par ailleurs manuel tant que le rapport est un `.pbix` local.
 
 ---
 
-## 📊 Dashboard Power BI
+## Dashboard
 
-Le mart `fct_transfer_analysis` alimente un dashboard Power BI interactif comprenant :
-
-- **3 KPIs clés** — nombre de transferts analysés, montant total, montant moyen
-- **Évolution temporelle** — courbe des montants de transferts jour par jour
-- **Top 10 des transferts les plus chers** — classement par montant
-- **Répartition par type de transfert** — contrat définitif vs prêt
-- **Filtres dynamiques** — par type de transfert et par club
-
-Sur cette extraction, **500 transferts** ont été analysés, représentant un montant total de plus de 450M€.
+Le mart alimente un rapport Power BI : trois KPI (nombre de transferts, montant total, montant moyen), l'évolution des montants dans le temps, le top 10 des transferts les plus chers, la répartition entre contrats définitifs et prêts, et des filtres par type et par club.
 
 ![Aperçu du dashboard](images/football_dashboard_preview.png)
 
-Le rapport pointe sur le mart BigQuery : chaque run du pipeline enrichit la table, le dashboard suit au rafraîchissement.
-
-> *Le `.pbix` est local, donc rafraîchi à la main — c'est le seul maillon de la chaîne qui ne tourne pas tout seul. Publication sur Power BI Service (refresh planifié via le connecteur BigQuery) à venir.*
-
+La capture correspond à une extraction de 500 transferts, pour plus de 450 M€ cumulés.
 
 ---
 
-## 🚀 Guide d'Exécution Locale (Docker)
+## Exécution locale
 
 ### Prérequis
 
-- Docker Desktop installé et lancé
-- Compte GCP avec un projet BigQuery + clé de service JSON
-- Clé API RapidAPI (Free API Live Football Data)
+- Docker Desktop
+- Un projet GCP avec BigQuery et une clé de compte de service
+- Une clé RapidAPI
 
 ### Configuration
 
-1. Copier `profiles.yml.example` en `profiles.yml` et renseigner vos informations BigQuery
+1. Copier `profiles.yml.example` en `profiles.yml` et renseigner le projet et le dataset
 2. Copier `.env.example` en `.env` et renseigner la clé API et le projet GCP
-3. Placer votre clé de service GCP sous `credentials.json`
+3. Placer la clé de compte de service sous `credentials.json`
 
-### Déploiement
+Ces trois fichiers sont ignorés par git.
+
+### Lancement
 
 ```powershell
-# 1. Build des images Docker
 docker-compose build
-
-# 2. Extraction API -> table brute BigQuery
-docker-compose run extract
-
-# 3. Modèles + tests
+docker-compose run extract          # API -> transfers_raw
 docker-compose run dbt deps
-docker-compose run dbt build
-
-# 4. Nettoyage des conteneurs
+docker-compose run dbt build        # modèles + tests
 docker-compose down --remove-orphans
 ```
 
@@ -306,9 +194,40 @@ docker-compose run --entrypoint python extract scripts/extract_transfers.py --pa
 
 ---
 
-## 👤 Auteur
+## Structure
 
-**Alexis Claudeon** — Data Analyst | Analytics Engineer Junior
+```
+football-data-pipeline/
+├── .github/workflows/
+│   ├── pipeline.yml            # run quotidien : extraction + dbt build
+│   └── ci.yml                  # ruff + dbt parse sur chaque PR
+├── models/
+│   ├── staging/
+│   │   ├── sources.yml
+│   │   ├── schema.yml
+│   │   └── stg_football_transfers.sql
+│   └── marts/
+│       ├── schema.yml
+│       └── fct_transfer_analysis.sql
+├── scripts/
+│   └── extract_transfers.py
+├── data/
+│   └── sample_transferts.csv   # échantillon, hors pipeline
+├── images/
+├── dbt_project.yml
+├── packages.yml
+├── profiles.yml.example
+├── .env.example
+├── requirements.txt
+├── Dockerfile
+└── docker-compose.yml
+```
 
-- 🐙 [GitHub](https://github.com/Alexis45140)
-- 💼 [LinkedIn](https://www.linkedin.com/in/alexis-claudeon)
+---
+
+## Auteur
+
+**Alexis Claudeon** — Data Analyst | Analytics Engineer junior
+
+- [GitHub](https://github.com/Alexis45140)
+- [LinkedIn](https://www.linkedin.com/in/alexis-claudeon)
