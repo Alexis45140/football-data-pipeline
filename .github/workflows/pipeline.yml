@@ -9,10 +9,6 @@ on:
       pages:
         description: "Nombre de pages API a extraire"
         default: "10"
-      full_refresh:
-        description: "Reconstruire le mart de zero (obligatoire au 1er run)"
-        type: boolean
-        default: false
 
 # Deux runs simultanes ecriraient dans la meme table
 concurrency:
@@ -55,7 +51,7 @@ jobs:
         run: |
           cp profiles.yml.example profiles.yml
           dbt deps
-          dbt build --target prod ${{ inputs.full_refresh && '--full-refresh' || '' }}
+          dbt build --target prod
 
       - name: Documentation
         if: always()

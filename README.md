@@ -28,7 +28,7 @@ Le pipeline suit une approche **ELT** moderne, entièrement conteneurisée :
 1. **Extract** — Récupération des transferts de joueurs via l'API RapidAPI (pagination multi-pages)
 2. **Load** — Écriture directe dans la table brute BigQuery, en append horodaté
 3. **Transform (Staging)** — Typage, déduplication et conversion des dates en `TIMESTAMP`
-4. **Transform (Marts)** — Table de faits incrémentale (`merge` sur la clé de transfert)
+4. **Transform (Marts)** — Table de faits reconstruite à chaque run depuis l'historique brut accumulé
 5. **Conteneurisation** — Deux services Docker indépendants : extraction et transformation
 6. **Orchestration** — GitHub Actions : run quotidien planifié, tests dbt bloquants
 
@@ -148,27 +148,18 @@ select * from deduplicated
 
 ---
 
-### 3. Couche Marts — `fct_transfer_analysis.sql` (Table incrémentale)
+### 3. Couche Marts — `fct_transfer_analysis.sql` (Table)
 
-Table de faits alimentant le dashboard. Le `merge` sur `transfer_id` fait que chaque run **ajoute** les nouveaux transferts au lieu de reconstruire la table : l'historique s'accumule bien au-delà de la fenêtre renvoyée par l'API.
+Table de faits alimentant le dashboard. L'accumulation ne se fait pas ici mais en amont : `transfers_raw` grossit à chaque run, le staging dédoublonne l'ensemble, et le mart est reconstruit par-dessus. L'historique dépasse donc la fenêtre glissante renvoyée par l'API, sans jamais recourir à du DML.
 
 ```sql
 {{ config(
-    materialized='incremental',
-    unique_key='transfer_id',
-    incremental_strategy='merge',
+    materialized='table',
     partition_by={'field': 'date_transfert', 'data_type': 'timestamp', 'granularity': 'month'},
     cluster_by=['type_transfert']
 ) }}
 
 select ... from {{ ref('stg_football_transfers') }}
-
-{% if is_incremental() %}
-    where _extracted_at > (
-        select coalesce(max(_extracted_at), timestamp('1970-01-01'))
-        from {{ this }}
-    )
-{% endif %}
 ```
 
 ### 4. Tests
@@ -218,7 +209,7 @@ on:
   workflow_dispatch:
 ```
 
-Authentification GCP via `google-github-actions/auth`, extraction, puis `dbt deps && dbt build --target prod`. Le déclenchement manuel expose une case *full refresh*, nécessaire au premier run pour reconstruire le mart au nouveau schéma. Le job échoue si un test dbt échoue, et les artefacts `target/` (dont `run_results.json` et la doc dbt) sont conservés 14 jours. Un garde `concurrency` empêche deux runs d'écrire en même temps dans la table brute.
+Authentification GCP via `google-github-actions/auth`, extraction, puis `dbt deps && dbt build --target prod`. Le job échoue si un test dbt échoue, et les artefacts `target/` (dont `run_results.json` et la doc dbt) sont conservés 14 jours. Un garde `concurrency` empêche deux runs d'écrire en même temps dans la table brute.
 
 **`ci.yml` — sur chaque PR**
 
@@ -241,6 +232,17 @@ prod:
   project: "{{ env_var('GCP_PROJECT') }}"
   keyfile_json: "{{ env_var('GCP_SA_KEY') | as_native }}"
 ```
+
+---
+
+## ⚠️ Limites connues
+
+Le projet tourne sur un **bac à sable BigQuery**, c'est-à-dire un projet GCP sans compte de facturation. Deux contraintes en découlent, assumées :
+
+- **Pas de DML.** `INSERT`, `UPDATE`, `DELETE` et `MERGE` sont refusés. Le mart est donc reconstruit par `CREATE TABLE AS SELECT` plutôt que par un `merge` incrémental. À ce volume la différence de coût est nulle ; elle deviendrait significative à partir de quelques millions de lignes.
+- **Rétention de 60 jours.** Toute table du sandbox expire automatiquement au bout de 60 jours. L'historique accumulé est donc une fenêtre glissante de 60 jours, pas un historique complet.
+
+Activer la facturation sur le projet lève les deux limites d'un coup, sans quitter le free tier (1 Tio de requêtes et 10 Gio de stockage gratuits par mois). À ce volume de données, la facture resterait à zéro.
 
 ---
 

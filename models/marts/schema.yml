@@ -3,8 +3,8 @@ version: 2
 models:
   - name: fct_transfer_analysis
     description: >
-      Table de faits alimentant le dashboard. Incrémentale : l'historique
-      s'accumule au fil des runs, au-delà de la fenêtre glissante de l'API.
+      Table de faits alimentant le dashboard, reconstruite a chaque run
+      depuis l'historique accumule dans transfers_raw.
     columns:
       - name: transfer_id
         tests:
