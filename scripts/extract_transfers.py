@@ -5,7 +5,7 @@ import logging
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 import pandas as pd
 import requests
@@ -86,7 +86,7 @@ def extract(total_pages):
     if len(df) < before:
         log.info("%s doublons intra-batch supprimes", before - len(df))
 
-    df["_extracted_at"] = datetime.now(timezone.utc).isoformat()
+    df["_extracted_at"] = datetime.now(UTC).isoformat()
     return df
 
 
@@ -109,7 +109,7 @@ def load_to_bigquery(df, project, dataset, table):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--pages", type=int, default=int(os.getenv("EXTRACT_PAGES", "10")))
+    parser.add_argument("--pages", type=int, default=int(os.getenv("EXTRACT_PAGES", "2")))
     parser.add_argument("--dry-run", action="store_true", help="extrait sans charger dans BigQuery")
     args = parser.parse_args()
 

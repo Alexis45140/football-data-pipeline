@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       pages:
-        description: "Nombre de pages API a extraire"
-        default: "10"
+        description: "Nombre de pages API a extraire (une requete par page)"
+        default: "2"
 
 # Deux runs simultanes ecriraient dans la meme table
 concurrency:
@@ -42,7 +42,9 @@ jobs:
       - name: Extract
         env:
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
-          EXTRACT_PAGES: ${{ inputs.pages || '10' }}
+          # Quota RapidAPI : 100 requetes par mois, une par page de 50 transferts.
+          # 2 pages par jour : 62 requetes au plus sur un mois de 31 jours.
+          EXTRACT_PAGES: ${{ inputs.pages || '2' }}
         run: python scripts/extract_transfers.py
 
       - name: Transform

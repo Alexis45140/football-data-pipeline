@@ -21,7 +21,7 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - run: pip install -r requirements.txt ruff
+      - run: pip install -r requirements.txt ruff==0.17.2
 
       - name: Lint Python
         run: ruff check scripts/

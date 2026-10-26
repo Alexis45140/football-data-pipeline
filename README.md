@@ -214,6 +214,8 @@ Activer la facturation lève les deux limites d'un coup, sans quitter le free ti
 
 Le rafraîchissement Power BI reste par ailleurs manuel tant que le rapport est un `.pbix` local.
 
+L'API, enfin, est limitée à 100 requêtes par mois, une requête par page de 50 transferts. Le run quotidien extrait donc 2 pages, soit 62 requêtes au plus sur un mois de 31 jours : à 10 pages par jour, le quota s'épuisait en une dizaine de jours, et le run s'arrêtait en erreur sur une réponse HTTP 429.
+
 ---
 
 ## Dashboard
