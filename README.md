@@ -2,7 +2,7 @@
 
 # ⚽ Football Transfers — pipeline ELT
 
-**Des transferts de football, d'une API jusqu'à un dashboard Power BI — sans une seule commande lancée à la main.**
+**Des transferts de football extraits d'une API, chargés dans BigQuery et transformés par dbt chaque jour sans une commande lancée à la main, puis restitués dans Power BI.**
 
 [![pipeline](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/pipeline.yml/badge.svg)](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/pipeline.yml)
 [![ci](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/Alexis45140/football-data-pipeline/actions/workflows/ci.yml)
@@ -28,7 +28,8 @@
 | **Ce qui le déclenche** | Un workflow GitHub Actions, tous les jours à 06:00 UTC |
 | **Ce qu'on voit** | 500 transferts, 453,11 M€ cumulés, 906,22 K€ en moyenne, 451 contrats définitifs pour 49 prêts |
 | **Ce qui le protège** | 10 tests dbt qui arrêtent le run avant le dashboard, un lint et une validation du graphe dbt sur chaque PR |
-| **Ce qu'il ne fait pas** | Pas de `merge` incrémental, pas d'historique au-delà de 60 jours — [et c'est assumé](#limites-connues) |
+| **Ce que je recommande** | Garder la reconstruction complète du mart à ce volume (500 transferts) : un `merge` incrémental ne s'impose qu'à partir de quelques millions de lignes, et demande d'activer la facturation BigQuery |
+| **Ce qu'il ne fait pas** | Pas de `merge` incrémental, pas d'historique au-delà de 60 jours, rapport Power BI rafraîchi à la main — [et c'est assumé](#limites-connues) |
 
 ---
 
